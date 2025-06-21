@@ -196,12 +196,22 @@ struct NotchHomeView: View {
     private var mainContent: some View {
         HStack(alignment: .top, spacing: 20) {
             MusicPlayerView(albumArtNamespace: albumArtNamespace)
-            
+ 
             if Defaults[.showCalendar] {
-                CalendarView()
-                    .onHover { isHovering in
-                        vm.isHoveringCalendar = isHovering
-                    }
+                if Defaults[.enablePomodoro] && vm.showPomodoroInsteadCalendar {
+                    PomodoroMainView()
+                        .transition(.scale.combined(with: .opacity))
+                        .environmentObject(vm)
+                } else {
+                    CalendarView()
+                        .onHover { isHovering in
+                            vm.isHoveringCalendar = isHovering
+                        }
+                        .environmentObject(vm)
+                }
+            } else if Defaults[.enablePomodoro] && vm.showPomodoroInsteadCalendar {
+                PomodoroMainView()
+                    .transition(.scale.combined(with: .opacity))
                     .environmentObject(vm)
             }
             
@@ -209,6 +219,7 @@ struct NotchHomeView: View {
                webcamManager.cameraAvailable,
                vm.isCameraExpanded {
                 CameraPreviewView(webcamManager: webcamManager)
+                    .transition(.scale.combined(with: .opacity))
                     .scaledToFit()
                     .opacity(vm.notchState == .closed ? 0 : 1)
                     .blur(radius: vm.notchState == .closed ? 20 : 0)
@@ -343,3 +354,4 @@ struct CustomSlider: View {
     )
     .environmentObject(BoringViewModel())
 }
+ 

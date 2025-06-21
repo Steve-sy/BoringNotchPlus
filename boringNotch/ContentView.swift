@@ -30,7 +30,6 @@ struct ContentView: View {
     @State private var gestureProgress: CGFloat = .zero
 
     @State private var haptics: Bool = false
-    
 
     @Namespace var albumArtNamespace
 
