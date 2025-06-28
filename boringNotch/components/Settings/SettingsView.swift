@@ -145,7 +145,6 @@ struct GeneralSettings: View {
     @Default(.enableGestures) var enableGestures
     @Default(.openNotchOnHover) var openNotchOnHover
     @Default(.alwaysHideInFullscreen) var alwaysHideInFullscreen
-
     @Default(.showClipboard) var showClipboard
     
     var body: some View {
