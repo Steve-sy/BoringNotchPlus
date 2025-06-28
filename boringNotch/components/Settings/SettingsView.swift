@@ -141,6 +141,8 @@ struct GeneralSettings: View {
     @Default(.openNotchOnHover) var openNotchOnHover
     @Default(.alwaysHideInFullscreen) var alwaysHideInFullscreen
 
+    @Default(.showClipboard) var showClipboard
+    
     var body: some View {
         Form {
             Section {
@@ -1030,6 +1032,12 @@ struct Appearance: View {
                 }
             }
 
+            Section {
+                Defaults.Toggle("Enable clipboard feature", key: .showClipboard)
+            } header: {
+                Text("Clipboard")
+            }
+            
             Section {
                 HStack {
                     ForEach(icons, id: \.self) { icon in
