@@ -20,6 +20,9 @@
         }
       }
     },
+    "%.0f sec" : {
+
+    },
     "%.0f seconds" : {
 
     },
@@ -35,6 +38,12 @@
     "%lld" : {
 
     },
+    "%lld min" : {
+
+    },
+    "%lld sec" : {
+
+    },
     "%lld%%" : {
 
     },
@@ -45,6 +54,12 @@
 
     },
     "• New feature 1" : {
+
+    },
+    "⏱️ Durations" : {
+
+    },
+    "👀 Sneak Peek" : {
 
     },
     "About" : {
@@ -286,6 +301,9 @@
     "Customize in Settings" : {
 
     },
+    "Cycles before long break" : {
+
+    },
     "Default" : {
 
     },
@@ -487,6 +505,9 @@
     "License key" : {
 
     },
+    "Long break" : {
+
+    },
     "Lottie JSON URL" : {
 
     },
@@ -678,6 +699,9 @@
     "Plugged In" : {
 
     },
+    "Pomodoro" : {
+
+    },
     "Progress bar" : {
       "localizations" : {
         "en" : {
@@ -773,6 +797,9 @@
     "Shelf" : {
 
     },
+    "Short break" : {
+
+    },
     "Shortcuts" : {
 
     },
@@ -822,6 +849,12 @@
           }
         }
       }
+    },
+    "Show every" : {
+
+    },
+    "Show for" : {
+
     },
     "Show on a specific display" : {
 
@@ -927,6 +960,9 @@
 
     },
     "What's New" : {
+
+    },
+    "Work duration" : {
 
     },
     "You can now enjoy the app. If you want to tweak things further, you can always visit the settings." : {
