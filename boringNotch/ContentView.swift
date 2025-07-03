@@ -32,7 +32,8 @@ struct ContentView: View {
 
     @State private var haptics: Bool = false
     
-    @StateObject private var clipboardMonitor = ClipboardMonitor()
+//    @StateObject private var clipboardMonitor = ClipboardMonitor()
+    @ObservedObject private var clipboardMonitor = ClipboardMonitor.shared
 
     @Namespace var albumArtNamespace
 
@@ -243,15 +244,17 @@ struct ContentView: View {
                               .padding(.trailing, 8)
                           }
                           else if coordinator.sneakPeek.type == .pomodoro {
-                              HStack(alignment: .center) {
-                                  Image(systemName: coordinator.sneakPeek.icon)
-                                      .foregroundColor(.red)
-                                  Text(BoringPomodoro.shared.currentPhaseLabel + " - " + BoringPomodoro.shared.timeRemainingFormatted)
-                                      .font(.caption)
-                                      .foregroundColor(.white)
+                              if vm.notchState == .closed && !vm.hideOnClosed && Defaults[.sneakPeekStyles] == .standard {
+                                  HStack(alignment: .center) {
+                                      Image(systemName: coordinator.sneakPeek.icon)
+                                          .foregroundColor(.red)
+                                      Text(BoringPomodoro.shared.currentPhaseLabel + " - " + BoringPomodoro.shared.timeRemainingFormatted)
+                                          .font(.caption)
+                                          .foregroundColor(.white)
+                                  }
+                                  .foregroundStyle(.gray)
+                                  .padding(.bottom, 10)
                               }
-                              .foregroundStyle(.gray)
-                              .padding(.bottom, 10)
                           }
                           // Old sneak peek music
                           else if coordinator.sneakPeek.type == .music {

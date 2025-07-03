@@ -10,6 +10,8 @@ import AppKit
 import Defaults
 
 class ClipboardMonitor: ObservableObject{
+    static let shared = ClipboardMonitor()
+    
     @Published var data: Array<ClipboardData> = []
 
     private var timer: Timer?

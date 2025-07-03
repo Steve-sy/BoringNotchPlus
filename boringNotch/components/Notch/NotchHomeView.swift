@@ -197,12 +197,26 @@ struct NotchHomeView: View {
         HStack(alignment: .top, spacing: 20) {
             MusicPlayerView(albumArtNamespace: albumArtNamespace)
             
+//            if Defaults[.showCalendar] {
+//                CalendarView()
+//                    .onHover { isHovering in
+//                        vm.isHoveringCalendar = isHovering
+//                    }
+//                    .environmentObject(vm)
+//            }
+ 
             if Defaults[.showCalendar] {
-                CalendarView()
-                    .onHover { isHovering in
-                        vm.isHoveringCalendar = isHovering
-                    }
-                    .environmentObject(vm)
+                if vm.showPomodoroInsteadOfCalendar {
+                    PomodoroMainView()
+                        .transition(.scale.combined(with: .opacity))
+                        .environmentObject(vm)
+                } else {
+                    CalendarView()
+                        .onHover { isHovering in
+                            vm.isHoveringCalendar = isHovering
+                        }
+                        .environmentObject(vm)
+                }
             }
             
             if Defaults[.showMirror],
