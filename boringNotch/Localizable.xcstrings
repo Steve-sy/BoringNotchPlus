@@ -423,6 +423,9 @@
     "Finish" : {
 
     },
+    "Focus" : {
+
+    },
     "General" : {
       "localizations" : {
         "en" : {
@@ -686,6 +689,9 @@
     "Open System Settings" : {
 
     },
+    "Pause" : {
+
+    },
     "Percentage" : {
       "localizations" : {
         "en" : {
@@ -885,6 +891,12 @@
 
     },
     "Square" : {
+
+    },
+    "Start Focus →" : {
+
+    },
+    "Stop" : {
 
     },
     "Stopped" : {

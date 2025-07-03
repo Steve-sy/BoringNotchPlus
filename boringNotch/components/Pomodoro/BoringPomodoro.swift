@@ -86,6 +86,7 @@ class BoringPomodoro: ObservableObject {
         currentPhase = .work
         cycleCount = 0
         timeRemaining = workDuration
+        didCompleteCycle = false
         stopSneakCycle()
         withAnimation(.bouncy) {
             shouldShowSneakPeek = false
