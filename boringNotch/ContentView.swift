@@ -20,7 +20,8 @@ struct ContentView: View {
     @ObservedObject var coordinator = BoringViewCoordinator.shared
     @ObservedObject var musicManager = MusicManager.shared
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
-
+    @ObservedObject var pomodoro = BoringPomodoro.shared
+    
     @State private var isHovering: Bool = false
     @State private var hoverWorkItem: DispatchWorkItem?
     @State private var debounceWorkItem: DispatchWorkItem?
@@ -218,9 +219,11 @@ struct ContentView: View {
                       } else if coordinator.sneakPeek.show && Defaults[.inlineHUD] && (coordinator.sneakPeek.type != .music) && (coordinator.sneakPeek.type != .battery) {
                           InlineHUD(type: $coordinator.sneakPeek.type, value: $coordinator.sneakPeek.value, icon: $coordinator.sneakPeek.icon, hoverAnimation: $isHovering, gestureProgress: $gestureProgress)
                               .transition(.opacity)
-                      } else if (!coordinator.expandingView.show || coordinator.expandingView.type == .music) && vm.notchState == .closed && (musicManager.isPlaying || !musicManager.isPlayerIdle) && coordinator.musicLiveActivityEnabled && !vm.hideOnClosed {
+                      }
+                      else if (!coordinator.expandingView.show || coordinator.expandingView.type == .music) && vm.notchState == .closed && (musicManager.isPlaying || !musicManager.isPlayerIdle) && coordinator.musicLiveActivityEnabled && !vm.hideOnClosed {
                           MusicLiveActivity()
-                      } else if !coordinator.expandingView.show && vm.notchState == .closed && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace] && !vm.hideOnClosed  {
+                      }
+                      else if !coordinator.expandingView.show && vm.notchState == .closed && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace] && !vm.hideOnClosed  {
                           BoringFaceAnimation().animation(.interactiveSpring, value: musicManager.isPlayerIdle)
                       } else if vm.notchState == .open {
                           BoringHeader()
@@ -232,13 +235,24 @@ struct ContentView: View {
                        }
                       
                       if coordinator.sneakPeek.show {
-                          if (coordinator.sneakPeek.type != .music) && (coordinator.sneakPeek.type != .battery) && !Defaults[.inlineHUD] {
+                          if (coordinator.sneakPeek.type != .music) && (coordinator.sneakPeek.type != .battery) && (coordinator.sneakPeek.type != .pomodoro) && !Defaults[.inlineHUD] {
                               SystemEventIndicatorModifier(eventType: $coordinator.sneakPeek.type, value: $coordinator.sneakPeek.value, icon: $coordinator.sneakPeek.icon, sendEventBack: { _ in
                                   //
                               })
                               .padding(.bottom, 10)
                               .padding(.leading, 4)
                               .padding(.trailing, 8)
+                          }
+                          else if coordinator.sneakPeek.type == .pomodoro {
+                              HStack(alignment: .center) {
+                                  Image(systemName: coordinator.sneakPeek.icon)
+                                      .foregroundColor(.red)
+                                  Text(BoringPomodoro.shared.currentPhaseLabel + " - " + BoringPomodoro.shared.timeRemainingFormatted)
+                                      .font(.caption)
+                                      .foregroundColor(.white)
+                              }
+                              .foregroundStyle(.gray)
+                              .padding(.bottom, 10)
                           }
                           // Old sneak peek music
                           else if coordinator.sneakPeek.type == .music {
