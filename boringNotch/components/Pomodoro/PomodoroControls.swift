@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct PomodoroControls: View {
     @ObservedObject var pomodoro = BoringPomodoro.shared
@@ -13,45 +14,50 @@ struct PomodoroControls: View {
     @State private var hideWorkItem: DispatchWorkItem?
     
     var body: some View {
-        HStack(spacing: 0) {
-            Button(action: {
-                if vm.showPomodoroInsteadOfCalendar {
-                    withAnimation {
-                        vm.showPomodoroInsteadOfCalendar = false
-                    }
-                    // Cancel any scheduled hiding
-                    hideWorkItem?.cancel()
-                    hideWorkItem = nil
-                } else {
-                    withAnimation {
-                        vm.showPomodoroInsteadOfCalendar = true
-                    }
-
-                    // Cancel previous hide if exists
-                    hideWorkItem?.cancel()
-
-                    // Schedule new hide
-                    let workItem = DispatchWorkItem {
+        if Defaults[.enablePomodoro] {
+            HStack(spacing: 0) {
+                Button(action: {
+                    if vm.showPomodoroInsteadCalendar {
                         withAnimation {
-                            vm.showPomodoroInsteadOfCalendar = false
+                            vm.showPomodoroInsteadCalendar = false
                         }
+                        // Cancel any scheduled hiding
+                        hideWorkItem?.cancel()
                         hideWorkItem = nil
+                    } else {
+                        withAnimation {
+                            vm.showPomodoroInsteadCalendar = true
+                        }
+                        
+                        // Cancel previous hide if exists
+                        hideWorkItem?.cancel()
+                        
+                        // Schedule new hide
+                        let workItem = DispatchWorkItem {
+                            withAnimation {
+                                vm.showPomodoroInsteadCalendar = false
+                            }
+                            hideWorkItem = nil
+                        }
+                        
+                        hideWorkItem = workItem
+                        
+                        if Defaults[.autoHidePomodoro] {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 25, execute: workItem)
+                        }
                     }
-
-                    hideWorkItem = workItem
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 30, execute: workItem)
+                }) {
+                    Capsule()
+                        .fill(.black)
+                        .frame(width: 30, height: 30)
+                        .overlay {
+                            Image(systemName: "timer")
+                                .foregroundColor(.white)
+                                .imageScale(.medium)
+                        }
                 }
-            }) {
-                Capsule()
-                    .fill(.black)
-                    .frame(width: 30, height: 30)
-                    .overlay {
-                        Image(systemName: "timer")
-                            .foregroundColor(.white)
-                            .imageScale(.medium)
-                    }
+                .buttonStyle(PlainButtonStyle())
             }
-            .buttonStyle(PlainButtonStyle())
         }
     }
 }
