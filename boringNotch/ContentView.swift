@@ -243,15 +243,17 @@ struct ContentView: View {
                               .padding(.leading, 4)
                               .padding(.trailing, 8)
                           }
-                          else if coordinator.sneakPeek.type == .pomodoro {
+                          else if Defaults[.enablePomodoro]  && coordinator.sneakPeek.type == .pomodoro {
                               if vm.notchState == .closed && !vm.hideOnClosed && Defaults[.sneakPeekStyles] == .standard {
-                                  HStack(alignment: .center) {
+                                  HStack(alignment: .center, spacing: 8) {
                                       Image(systemName: coordinator.sneakPeek.icon)
-                                          .foregroundColor(.red)
-                                      Text(BoringPomodoro.shared.currentPhaseLabel + " - " + BoringPomodoro.shared.timeRemainingFormatted)
+                                          .foregroundColor(pomodoro.hasStarted ? .green : .orange)
+                                      Text("\(pomodoro.phaseText) \(pomodoro.timeRemainingFormatted)")
+                                          .id(pomodoro.phaseText)
                                           .font(.caption)
                                           .foregroundColor(.white)
                                   }
+                                  .frame(maxWidth: .infinity, alignment: .center)
                                   .foregroundStyle(.gray)
                                   .padding(.bottom, 10)
                               }

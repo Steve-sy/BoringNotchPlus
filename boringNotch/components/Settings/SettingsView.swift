@@ -695,34 +695,8 @@ struct Shelf: View {
     }
 }
 
-//struct PomodoroSettings: View {
-//    @Default(.pomodoroWorkMinutes) var work
-//    @Default(.pomodoroShortMinutes) var shortBreak
-//    @Default(.pomodoroLongMinutes) var longBreak
-//    @Default(.pomodoroCyclesBeforeLong) var cyclesBeforeLong
-//    @Default(.pomodoroSneakInterval) var sneakInterval
-//    @Default(.pomodoroSneakDuration) var sneakDuration
-//
-//    var body: some View {
-//        Form {
-//            Section("Durations") {
-//                Stepper("\(work) min work",       value: $work,       in: 1...60)
-//                Stepper("\(shortBreak) min break", value: $shortBreak, in: 1...30)
-//                Stepper("\(longBreak) min break",  value: $longBreak,  in: 1...60)
-//                Stepper("\(cyclesBeforeLong) cycles → long break",
-//                        value: $cyclesBeforeLong, in: 1...8)
-//            }
-//            Section("Sneak-peek") {
-//                Stepper("Every \(sneakInterval) sec", value: $sneakInterval, in: 60...600, step: 30)
-//                Stepper("Show for \(sneakDuration, specifier: "%.0f") sec", value: $sneakDuration, in: 1...30, step: 1)
-//            }
-//        }
-//        .navigationTitle("Pomodoro")
-//    }
-//}
-
 struct PomodoroSettings: View {
-    @Default(.pomodoroWorkMinutes) var work
+    @Default(.enablePomodoro) var enablePomodoro
     @Default(.pomodoroShortMinutes) var shortBreak
     @Default(.pomodoroLongMinutes) var longBreak
     @Default(.pomodoroCyclesBeforeLong) var cyclesBeforeLong
@@ -731,15 +705,12 @@ struct PomodoroSettings: View {
 
     var body: some View {
         Form {
-            Section("⏱️ Durations") {
-                Stepper(value: $work, in: 1...60) {
-                    HStack {
-                        Text("Work duration")
-                        Spacer()
-                        Text("\(work) min")
-                            .foregroundStyle(.secondary)
-                    }
-                }
+            Section("Pomodoro Focus") {
+                Defaults.Toggle("Enable Pomodoro", key: .enablePomodoro)
+                
+            Group {
+                Defaults.Toggle("Auto Hide", key: .autoHidePomodoro)
+                Defaults.Toggle("Enable Sounds", key: .playSoundPomodoro)
 
                 Stepper(value: $shortBreak, in: 1...30) {
                     HStack {
@@ -749,7 +720,7 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-
+                                
                 Stepper(value: $longBreak, in: 1...60) {
                     HStack {
                         Text("Long break")
@@ -758,7 +729,7 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-
+                
                 Stepper(value: $cyclesBeforeLong, in: 1...8) {
                     HStack {
                         Text("Cycles before long break")
@@ -767,9 +738,10 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-            }
+            }.disabled(!enablePomodoro)
+        }
 
-            Section("👀 Sneak Peek") {
+            Section("Sneak Peek") {
                 Stepper(value: $sneakInterval, in: 60...600, step: 30) {
                     HStack {
                         Text("Show every")
@@ -787,7 +759,7 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-            }
+            }.disabled(!enablePomodoro)
         }
         .navigationTitle("Pomodoro")
     }

@@ -32,6 +32,16 @@
     "%@" : {
 
     },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%d%%" : {
 
     },
@@ -54,12 +64,6 @@
 
     },
     "• New feature 1" : {
-
-    },
-    "⏱️ Durations" : {
-
-    },
-    "👀 Sneak Peek" : {
 
     },
     "About" : {
@@ -708,6 +712,9 @@
     "Pomodoro" : {
 
     },
+    "Pomodoro Focus" : {
+
+    },
     "Progress bar" : {
       "localizations" : {
         "en" : {
@@ -871,6 +878,9 @@
     "Slider color" : {
 
     },
+    "Sneak Peek" : {
+
+    },
     "Sneak Peek shows the media title and artist under the notch for a few seconds." : {
 
     },
@@ -972,9 +982,6 @@
 
     },
     "What's New" : {
-
-    },
-    "Work duration" : {
 
     },
     "You can now enjoy the app. If you want to tweak things further, you can always visit the settings." : {

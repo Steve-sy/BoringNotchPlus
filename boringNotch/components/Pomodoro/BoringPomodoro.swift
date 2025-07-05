@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import SwiftUI
 import Defaults
 import AppKit
 
@@ -15,240 +14,252 @@ enum PomodoroPhase {
     case work, shortBreak, longBreak
 }
 
-class BoringPomodoro: ObservableObject {
+final class BoringPomodoro: ObservableObject {
     static let shared = BoringPomodoro()
-    @Default(.pomodoroWorkMinutes) private var workMinutes
-    @Default(.pomodoroShortMinutes) private var shortMinutes
-    @Default(.pomodoroLongMinutes) private var longMinutes
-    @Default(.pomodoroCyclesBeforeLong) private var cyclesBeforeLong
-    @Default(.pomodoroSneakInterval) private var sneakInterval
-    @Default(.pomodoroSneakDuration) private var sneakDuration
+
+    // MARK: - Settings
+    @Published public var workMinutes: Int
+    @Published private var shortMinutes: Int
+    @Published private var longMinutes: Int
+    @Published private var cyclesBeforeLong: Int
+    @Published private var sneakInterval: Int
+    @Published private var sneakDuration: Double
+
+    // MARK: - Timer State
+    @Published public private(set) var timeRemaining: Int
+    @Published public private(set) var totalMinutesSpent: Int = 0
+    @Published public var isRunning = false
+    @Published public var isPaused = false
+    @Published public var didCompleteCycle = false
+    @Published public var currentPhase: PomodoroPhase = .work
+    @Published public var hasStarted = false
     
+    private var cancellables = Set<AnyCancellable>()
+    private var timerCancellable: AnyCancellable?
+    private var sneakTimer: Timer?
+    private var cycleCount = 0
+
     private var workDuration: Int { workMinutes * 60 }
     private var shortBreakDuration: Int { shortMinutes * 60 }
     private var longBreakDuration: Int { longMinutes * 60 }
-    private var longBreakAfter: Int { cyclesBeforeLong }
-    
-    @Published var isRunning = false
-    @Published var isPaused = false
-    @Published var wasRunning = false
-    @Published var currentPhase: PomodoroPhase = .work
-    @Published var shouldShowSneakPeek = false
-    @Published private(set) var timeRemaining: Int = 0
-    @Published var didCompleteCycle = false
-    
-    private var timer: AnyCancellable?
-    private var sneakTimer: Timer?
-    private var cycleCount = 0
-    
-    init() {
-        // start with your configured work duration
-        self.timeRemaining = workDuration
+
+    private init() {
+        // load raw defaults into locals first (no self used)
+        let work     = Defaults[.pomodoroWorkMinutes]
+        let short    = Defaults[.pomodoroShortMinutes]
+        let long     = Defaults[.pomodoroLongMinutes]
+        let cycles   = Defaults[.pomodoroCyclesBeforeLong]
+        let interval = Defaults[.pomodoroSneakInterval]
+        let duration = Defaults[.pomodoroSneakDuration]
+
+        workMinutes      = work
+        shortMinutes     = short
+        longMinutes      = long
+        cyclesBeforeLong = cycles
+        sneakInterval    = interval
+        sneakDuration    = duration
+
+        // compute initial timeRemaining without referencing self
+        let initialTime = work * 60
+        timeRemaining   = initialTime
+
+        setupBindings()
     }
     
-    var timeRemainingFormatted: String {
-        let minutes = timeRemaining / 60
-        let seconds = timeRemaining % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+    private func setupBindings() {
+        $workMinutes
+            .dropFirst()
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroWorkMinutes] = $0 }
+            .store(in: &cancellables)
+        
+        $shortMinutes
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroShortMinutes] = $0 }
+            .store(in: &cancellables)
+
+        $longMinutes
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroLongMinutes] = $0 }
+            .store(in: &cancellables)
+
+        $cyclesBeforeLong
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroCyclesBeforeLong] = $0 }
+            .store(in: &cancellables)
+
+        $sneakInterval
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroSneakInterval] = $0 }
+            .store(in: &cancellables)
+
+        $sneakDuration
+            .removeDuplicates()
+            .sink { Defaults[.pomodoroSneakDuration] = $0 }
+            .store(in: &cancellables)
     }
 
-    var currentPhaseLabel: String {
-        if didCompleteCycle {
-            return "You did it! 🎉"
-        }
-        
-        switch currentPhase {
-        case .work: return "Focus Time! Let's Work 💪"
-        case .shortBreak: return "Take a Short Break 🌿"
-        case .longBreak: return "Take It Easy! Long Break ☕"
-        }
-    }
+    // MARK: - Control Methods
 
     func toggle() {
         if !isRunning {
             isRunning = true
             isPaused = false
-            wasRunning = true
-            startTimer()
-            startSneakCycle()
-            showSneakPeekTemporarily()
+            hasStarted = true
+            startSession()
         } else {
             isPaused.toggle()
-            isPaused ? timer?.cancel() : startTimer()
+            if isPaused {
+                timerCancellable?.cancel()
+            } else {
+                startTimer()
+            }
         }
     }
 
     func stop() {
-        timer?.cancel()
+        timerCancellable?.cancel()
         isRunning = false
         isPaused = false
-        wasRunning = false
+        hasStarted = false
         currentPhase = .work
-        cycleCount = 0
         timeRemaining = workDuration
+        cycleCount = 0
         didCompleteCycle = false
+        totalMinutesSpent = 0
         stopSneakCycle()
-        withAnimation(.bouncy) {
-            shouldShowSneakPeek = false
+    }
+
+    private func startSession() {
+        if currentPhase == .work && !hasStarted {
+            hasStarted = true
         }
+        startTimer()
+        startSneakCycle()
+        showSneakPeekTemporarily()
     }
 
     private func startTimer() {
-        timer = Timer.publish(every: 1, on: .main, in: .common)
+        timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
-            .sink { [weak self] _ in
-                guard let self = self else { return }
-                if self.timeRemaining > 0 {
-                    self.timeRemaining -= 1
-                } else {
-                    self.timer?.cancel()
-                    self.isRunning = false
-                    self.isPaused = false
-                    self.wasRunning = false
-                    self.stopSneakCycle()
-                    withAnimation(.bouncy) {
-                        self.shouldShowSneakPeek = false
-                    }
-                    self.advancePhase()
-                }
-            }
+            .sink { [weak self] _ in self?.timerTick() }
+    }
+
+    private func timerTick() {
+        guard timeRemaining > 0 else {
+            timerCancellable?.cancel()
+            advancePhase()
+            return
+        }
+        timeRemaining -= 1
     }
     
-//    private func advancePhase() {
-//        switch currentPhase {
-//        case .work:
-//            cycleCount += 1
-//            switch cycleCount {
-//            case 1, 2:
-//                currentPhase = .shortBreak
-//            case 3:
-//                currentPhase = .longBreak
-//            case 4:
-//                celebrateCompletion()
-//                return
-//            default:
-//                currentPhase = .shortBreak
-//            }
-//
-//        case .shortBreak, .longBreak:
-//            currentPhase = .work
-//        }
-//
-//        timeRemaining = phaseDuration(currentPhase)
-//
-//        isRunning = true
-//        wasRunning = true
-//        startTimer()
-//        startSneakCycle()
-//        showSneakPeekTemporarily()
-//        playSound(for: currentPhase)
-//    }
-    
+    func updateTimeRemaining() {
+        if !isRunning && currentPhase == .work {
+            timeRemaining = workMinutes * 60
+        }
+    }
+
     private func advancePhase() {
         switch currentPhase {
         case .work:
+            hasStarted = false
             cycleCount += 1
-
-            if cycleCount == longBreakAfter {
+            if cycleCount == cyclesBeforeLong {
                 currentPhase = .longBreak
-            } else if cycleCount > longBreakAfter {
+            } else if cycleCount > cyclesBeforeLong {
                 celebrateCompletion()
                 return
             } else {
                 currentPhase = .shortBreak
             }
-
         case .shortBreak, .longBreak:
             currentPhase = .work
         }
 
-        timeRemaining = phaseDuration(currentPhase)
-        isRunning = true
-        wasRunning = true
+        timeRemaining = phaseDuration()
+        isRunning    = true
         startTimer()
         startSneakCycle()
         showSneakPeekTemporarily()
-        playSound(for: currentPhase)
+        playSound()
     }
-    
-    private func phaseDuration(_ phase: PomodoroPhase) -> Int {
-        switch phase {
-        case .work: return workDuration
+
+    private func phaseDuration() -> Int {
+        switch currentPhase {
+        case .work:       return workDuration
         case .shortBreak: return shortBreakDuration
-        case .longBreak: return longBreakDuration
+        case .longBreak:  return longBreakDuration
         }
     }
 
     private func startSneakCycle() {
         sneakTimer?.invalidate()
-        sneakTimer = Timer.scheduledTimer(withTimeInterval: 300, repeats: true) { _ in
-            DispatchQueue.main.async {
-                self.showSneakPeekTemporarily()
-            }
+        sneakTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(sneakInterval), repeats: true) { [weak self] _ in
+            self?.showSneakPeekTemporarily()
         }
     }
 
     private func stopSneakCycle() {
         sneakTimer?.invalidate()
-        withAnimation(.bouncy) {
-            self.shouldShowSneakPeek = false
-        }
     }
 
     private func showSneakPeekTemporarily() {
-//        // Local SneakPeek (for inline HUD)
-//        DispatchQueue.main.async {
-//            withAnimation(.bouncy) {
-//                self.shouldShowSneakPeek = true
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                withAnimation(.bouncy) {
-//                    self.shouldShowSneakPeek = false
-//                }
-//            }
-//        }
-
-        // Global SneakPeek (below music)
         DispatchQueue.main.async {
-            withAnimation(.bouncy) {
-                BoringViewCoordinator.shared.toggleSneakPeek(
-                    status: true,
-                    type: .pomodoro,
-                    duration: 5.0,
-                    value: 0,
-                    icon: "timer"
-                )
+            BoringViewCoordinator.shared.toggleSneakPeek(
+                status: true,
+                type: .pomodoro,
+                duration: TimeInterval(self.sneakDuration),
+                value: 0,
+                icon: "timer"
+            )
+        }
+    }
+
+    var timeRemainingFormatted: String {
+        let minutes = timeRemaining / 60
+        let seconds = timeRemaining % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    var phaseText: String {
+        switch currentPhase {
+        case .shortBreak:
+            return "Take a short break!"
+        case .longBreak:
+            return "Take a long break!"
+        case .work:
+            if didCompleteCycle {
+                return "Focus complete! 🎉 Total: \(totalMinutesSpent) mins"
+            } else if hasStarted {
+                return "Focus started!"
+            } else {
+                return ""
             }
         }
     }
     
     private func celebrateCompletion() {
         stopSneakCycle()
-        stop()
+        totalMinutesSpent = max(1, cycleCount) * workMinutes
+        isRunning = false
+        hasStarted = false
         didCompleteCycle = true
-
         NSSound(named: .init("Hero"))?.play()
-
-        DispatchQueue.main.async {
-            BoringViewCoordinator.shared.toggleSneakPeek(
-                status: true,
-                type: .pomodoro,
-                duration: 6.0,
-                value: 0,
-                icon: "checkmark.seal"
-            )
+        showSneakPeekTemporarily()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.stop()
         }
+    }
 
+    private func playSound() {
+        guard Defaults[.playSoundPomodoro] else { return }
+        let soundName: NSSound.Name
+        switch currentPhase {
+        case .work:       soundName = .init("Glass")
+        case .shortBreak: soundName = .init("Funk")
+        case .longBreak:  soundName = .init("Submarine")
+        }
+        NSSound(named: soundName)?.play()
     }
-    
-    private func playSound(for phase: PomodoroPhase) {
-      let name: NSSound.Name
-      switch phase {
-        case .work:       name = NSSound.Name("Glass")             // simple system beep
-        case .shortBreak: name = NSSound.Name("Funk")   // “Ping”
-        case .longBreak:  name = NSSound.Name("Submarine") // “Submarine”
-      }
-      NSSound(named: name)?.play()
-    }
-    
 }

@@ -40,8 +40,10 @@ struct BoringHeader: View {
 
             HStack(spacing: 4) {
                 if vm.notchState == .open {
-                    PomodoroControls()
-                    .buttonStyle(PlainButtonStyle())
+                    if Defaults[.enablePomodoro] {
+                        PomodoroControls()
+                        .buttonStyle(PlainButtonStyle())
+                    }
                     if Defaults[.showMirror] {
                         Button(action: {
                             vm.toggleCameraPreview()
