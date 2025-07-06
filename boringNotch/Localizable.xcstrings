@@ -706,6 +706,9 @@
         }
       }
     },
+    "Pin" : {
+
+    },
     "Plugged In" : {
 
     },
@@ -763,6 +766,9 @@
       }
     },
     "Remember last tab" : {
+
+    },
+    "Remove" : {
 
     },
     "Restart" : {
@@ -947,6 +953,9 @@
 
     },
     "unmuted" : {
+
+    },
+    "Unpin" : {
 
     },
     "Upgrade to Pro" : {
