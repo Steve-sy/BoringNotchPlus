@@ -25,7 +25,7 @@ class ClipboardMonitor: ObservableObject{
     }
 
     private func startMonitoring() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
             self?.checkClipboard()
         }
     }
@@ -43,25 +43,26 @@ class ClipboardMonitor: ObservableObject{
             if let copiedText = pasteboard.string(forType: .string),
                let activeApp = NSWorkspace.shared.frontmostApplication {
                 
-                let bundleID = activeApp.bundleIdentifier ?? "sconosciuto"
+                let bundleID = activeApp.bundleIdentifier ?? "unknown"
                 
-                DispatchQueue.main.async {
-                    self.addToClipboard(element: ClipboardData(text: copiedText, bundleID: bundleID))
-                }
+                addToClipboard(element: ClipboardData(text: copiedText, bundleID: bundleID))
+                
             }
         }
     }
     
-    private func addToClipboard(element: ClipboardData){
-        if self.data.contains(element) {
-            self.data.removeAll(where: { $0 == element })
+    private func addToClipboard(element: ClipboardData) {
+        if let existing = data.firstIndex(where: { $0.text == element.text }) {
+            data.remove(at: existing)
         }
-        self.data.append(element)
+        data.append(element)
         
-        // Keep only the latest 48 clipboard items to avoid memory bloat
-        if self.data.count > 48 {
-            self.data.removeFirst()
-        }
+        // kick out the oldest non-pinned
+        let nonPinnedCount = data.reduce(0) { $0 + ($1.isPinned ? 0 : 1) }
+                if nonPinnedCount > 48,
+                   let oldest = data.firstIndex(where: { !$0.isPinned }) {
+                    data.remove(at: oldest)
+                }
     }
     
     static func CopyFromApp(_ text: String){
@@ -81,12 +82,29 @@ class ClipboardMonitor: ObservableObject{
         }
     }
     
+    func togglePin(_ item: ClipboardData) {
+        if let index = data.firstIndex(of: item) {
+            data[index].isPinned.toggle()
+            objectWillChange.send()
+        }
+    }
+    
     deinit {
         timer?.invalidate()
     }
 }
 
-struct ClipboardData: Hashable {
+struct ClipboardData: Hashable, Identifiable, Equatable {
+    let id = UUID()
     var text: String
     var bundleID: String
+    var isPinned: Bool = false
+
+    static func == (lhs: ClipboardData, rhs: ClipboardData) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

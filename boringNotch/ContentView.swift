@@ -244,7 +244,7 @@ struct ContentView: View {
                               .padding(.trailing, 8)
                           }
                           else if Defaults[.enablePomodoro]  && coordinator.sneakPeek.type == .pomodoro {
-                              if vm.notchState == .closed && !vm.hideOnClosed && Defaults[.sneakPeekStyles] == .standard {
+                              if vm.notchState == .closed && !vm.hideOnClosed {
                                   HStack(alignment: .center, spacing: 8) {
                                       Image(systemName: coordinator.sneakPeek.icon)
                                           .foregroundColor(pomodoro.hasStarted ? .green : .orange)
