@@ -11,6 +11,8 @@
 > \[!IMPORTANT]
 > This is a custom enhanced build of BoringNotch with new features and fixes. First time launching on macOS will show a security popup. Go to **Settings > Privacy & Security** and click **Open Anyway**. You only need to do this once.
 
+[![Watch the demo](https://static.wixstatic.com/media/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png/v1/fill/w_1480,h_268,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png)](https://video.wixstatic.com/video/4888ba_9d0f8ceee27b49d7b986802c7df1f89b/360p/mp4/file.mp4)
+
 ## What is boringNotch+?
 
 **boringNotch+** is my enhanced fork of the original [BoringNotch](https://github.com/TheBoredTeam/boring.notch) app. It's a macOS menu bar utility that transforms the screen notch into something smart, dynamic, and personal. I added new widgets, polished existing ones, improved performance, and fixed annoying bugs.
