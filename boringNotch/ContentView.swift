@@ -33,6 +33,7 @@ struct ContentView: View {
     
     @StateObject private var clipboardMonitor = ClipboardMonitor()
 
+    @StateObject private var clipboardMonitor = ClipboardMonitor()
     @Namespace var albumArtNamespace
 
     @Default(.useMusicVisualizer) var useMusicVisualizer
@@ -40,7 +41,7 @@ struct ContentView: View {
     @Default(.showNotHumanFace) var showNotHumanFace
     @Default(.useModernCloseAnimation) var useModernCloseAnimation
     @Default(.showClipboard) var showClipboard
-    
+
     private let extendedHoverPadding: CGFloat = 30
     private let zeroHeightHoverPadding: CGFloat = 10
 
