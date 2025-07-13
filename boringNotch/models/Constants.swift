@@ -156,6 +156,18 @@ extension Defaults.Keys {
     // MARK: Clipboard
     static let showClipboard = Key<Bool>("showClipboard", default: true)
     
+    // MARK: Pomodoro durations (in minutes)
+    static let enablePomodoro = Key<Bool>("enablePomodoro", default: true)
+    static let autoHidePomodoro = Key<Bool>("autoHidePomodoro", default: true)
+    static let pomodoroWorkMinutes    = Key<Int>("pomodoroWorkMinutes",    default: 25)
+    static let pomodoroShortMinutes   = Key<Int>("pomodoroShortMinutes",   default: 5)
+    static let pomodoroLongMinutes    = Key<Int>("pomodoroLongMinutes",    default: 15)
+    static let pomodoroCyclesBeforeLong = Key<Int>("pomodoroCyclesBeforeLong", default: 3)
+    // Sneak-peek interval & duration (in seconds)
+    static let pomodoroSneakInterval  = Key<Int>("pomodoroSneakInterval",  default: 300)
+    static let pomodoroSneakDuration  = Key<Double>("pomodoroSneakDuration", default: 5.0)
+    static let playSoundPomodoro = Key<Bool>("playSoundPomodoro", default: true)
+    
     // Helper to determine the default media controller based on macOS version
     static var defaultMediaController: MediaControllerType {
         if #available(macOS 15.4, *) {

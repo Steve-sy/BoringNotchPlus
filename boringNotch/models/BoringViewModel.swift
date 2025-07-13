@@ -39,6 +39,8 @@ class BoringViewModel: NSObject, ObservableObject {
     @Published var isCameraExpanded: Bool = false
     @Published var isRequestingAuthorization: Bool = false
     
+    @Published var showPomodoroInsteadCalendar: Bool = false
+    
     deinit {
         destroy()
     }

@@ -20,6 +20,9 @@
         }
       }
     },
+    "%.0f sec" : {
+
+    },
     "%.0f seconds" : {
 
     },
@@ -29,10 +32,26 @@
     "%@" : {
 
     },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%d%%" : {
 
     },
     "%lld" : {
+
+    },
+    "%lld min" : {
+
+    },
+    "%lld sec" : {
 
     },
     "%lld%%" : {
@@ -286,6 +305,9 @@
     "Customize in Settings" : {
 
     },
+    "Cycles before long break" : {
+
+    },
     "Default" : {
 
     },
@@ -405,6 +427,9 @@
     "Finish" : {
 
     },
+    "Focus" : {
+
+    },
     "General" : {
       "localizations" : {
         "en" : {
@@ -485,6 +510,9 @@
 
     },
     "License key" : {
+
+    },
+    "Long break" : {
 
     },
     "Lottie JSON URL" : {
@@ -665,6 +693,9 @@
     "Open System Settings" : {
 
     },
+    "Pause" : {
+
+    },
     "Percentage" : {
       "localizations" : {
         "en" : {
@@ -675,7 +706,16 @@
         }
       }
     },
+    "Pin" : {
+
+    },
     "Plugged In" : {
+
+    },
+    "Pomodoro" : {
+
+    },
+    "Pomodoro Focus" : {
 
     },
     "Progress bar" : {
@@ -728,6 +768,9 @@
     "Remember last tab" : {
 
     },
+    "Remove" : {
+
+    },
     "Restart" : {
 
     },
@@ -771,6 +814,9 @@
       }
     },
     "Shelf" : {
+
+    },
+    "Short break" : {
 
     },
     "Shortcuts" : {
@@ -823,6 +869,12 @@
         }
       }
     },
+    "Show every" : {
+
+    },
+    "Show for" : {
+
+    },
     "Show on a specific display" : {
 
     },
@@ -830,6 +882,9 @@
 
     },
     "Slider color" : {
+
+    },
+    "Sneak Peek" : {
 
     },
     "Sneak Peek shows the media title and artist under the notch for a few seconds." : {
@@ -852,6 +907,12 @@
 
     },
     "Square" : {
+
+    },
+    "Start Focus →" : {
+
+    },
+    "Stop" : {
 
     },
     "Stopped" : {
@@ -892,6 +953,9 @@
 
     },
     "unmuted" : {
+
+    },
+    "Unpin" : {
 
     },
     "Upgrade to Pro" : {

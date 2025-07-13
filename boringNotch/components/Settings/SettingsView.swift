@@ -60,6 +60,9 @@ struct SettingsView: View {
                 NavigationLink(value: "Shelf") {
                     Label("Shelf", systemImage: "books.vertical")
                 }
+                NavigationLink(value: "Pomodoro") {
+                    Label("Pomodoro", systemImage: "timer")
+                }
                 NavigationLink(value: "Shortcuts") {
                     Label("Shortcuts", systemImage: "keyboard")
                 }
@@ -92,6 +95,8 @@ struct SettingsView: View {
                     Downloads()
                 case "Shelf":
                     Shelf()
+                case "Pomodoro":
+                    PomodoroSettings()
                 case "Shortcuts":
                     Shortcuts()
                 case "Extensions":
@@ -687,6 +692,76 @@ struct Shelf: View {
             }
         }
         .navigationTitle("Shelf")
+    }
+}
+
+struct PomodoroSettings: View {
+    @Default(.enablePomodoro) var enablePomodoro
+    @Default(.pomodoroShortMinutes) var shortBreak
+    @Default(.pomodoroLongMinutes) var longBreak
+    @Default(.pomodoroCyclesBeforeLong) var cyclesBeforeLong
+    @Default(.pomodoroSneakInterval) var sneakInterval
+    @Default(.pomodoroSneakDuration) var sneakDuration
+
+    var body: some View {
+        Form {
+            Section("Pomodoro Focus") {
+                Defaults.Toggle("Enable Pomodoro", key: .enablePomodoro)
+                
+            Group {
+                Defaults.Toggle("Auto Hide", key: .autoHidePomodoro)
+                Defaults.Toggle("Enable Sounds", key: .playSoundPomodoro)
+
+                Stepper(value: $shortBreak, in: 1...30) {
+                    HStack {
+                        Text("Short break")
+                        Spacer()
+                        Text("\(shortBreak) min")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                                
+                Stepper(value: $longBreak, in: 1...60) {
+                    HStack {
+                        Text("Long break")
+                        Spacer()
+                        Text("\(longBreak) min")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                
+                Stepper(value: $cyclesBeforeLong, in: 1...8) {
+                    HStack {
+                        Text("Cycles before long break")
+                        Spacer()
+                        Text("\(cyclesBeforeLong)")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }.disabled(!enablePomodoro)
+        }
+
+            Section("Sneak Peek") {
+                Stepper(value: $sneakInterval, in: 60...600, step: 30) {
+                    HStack {
+                        Text("Show every")
+                        Spacer()
+                        Text("\(sneakInterval) sec")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Stepper(value: $sneakDuration, in: 1...30, step: 1) {
+                    HStack {
+                        Text("Show for")
+                        Spacer()
+                        Text("\(sneakDuration, specifier: "%.0f") sec")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }.disabled(!enablePomodoro)
+        }
+        .navigationTitle("Pomodoro")
     }
 }
 
