@@ -60,6 +60,8 @@
 * Custom intervals and duration
 * Works with music, pomodoro, clipboard, etc.
 
+<img width="100%" src="https://public-files.gumroad.com/mt23xkf4f5zanbfeozwz5y4mx3x5" />
+
 ## Why boringNotch+?
 
 * My own fork with real features, not just ideas
