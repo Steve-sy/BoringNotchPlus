@@ -1,134 +1,88 @@
-## TheBoringNotch
-![TheBoringNotch Build & Test](https://github.com/TheBoredTeam/boring.notch/actions/workflows/cicd.yml/badge.svg)
+## boringNotch+
+
+![Build & Test](https://github.com/TheBoredTeam/boring.notch/actions/workflows/cicd.yml/badge.svg)
 
 <img width="150" src="https://github.com/user-attachments/assets/e96f6110-ffad-4d8b-a02d-ead87b7edbe1" />
 
 ## Download
-<a href="https://github.com/TheBoredTeam/boring.notch/releases/download/wolf.painting/WolfPainting.dmg" target="_self"><img width="200" src="https://www.adviksoft.com/blog/wp-content/uploads/2023/09/editor_download_mac.png" /></a>
 
-> [!WARNING]
-> We don't have an Apple Developer account yet. The application will show a popup on first start. Click **Okay**, then, go to **Settings / Privacy & Security** and scroll down until you see a button called **Open anyway**. You'll only have to do this once.
+<a href="https://mustafaramx.gumroad.com/l/htcrch" target="_blank"><img width="200" src="https://www.adviksoft.com/blog/wp-content/uploads/2023/09/editor_download_mac.png" /></a>
 
-## Website
-> [!NOTE]
-> Hey There 👋 We have a new website at https://theboring.name! Go check it out for stuff like:
-> - All current bugs
-> - People's opinions about Boring.Notch
-> - All current features 
-> - Q&A answers
+> \[!IMPORTANT]
+> This is a custom enhanced build of BoringNotch with new features and fixes. First time launching on macOS will show a security popup. Go to **Settings > Privacy & Security** and click **Open Anyway**. You only need to do this once.
 
-## Star History
+## What is boringNotch+?
 
-[![Star History Chart](https://api.star-history.com/svg?repos=TheBoredTeam/boring.notch&type=Timeline)](https://star-history.com/#TheBoredTeam/boring.notch&Timeline)
+**boringNotch+** is my enhanced fork of the original [BoringNotch](https://github.com/TheBoredTeam/boring.notch) app. It's a macOS menu bar utility that transforms the screen notch into something smart, dynamic, and personal. I added new widgets, polished existing ones, improved performance, and fixed annoying bugs.
 
-## Buy us a coffee!
+### Live Preview ➡ [https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch](https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch)
 
-<a href="https://www.buymeacoffee.com/jfxh67wvfxq" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+## Key Features (New & Improved)
 
-## Join our Discord Server (new)
+### ✨ Now Playing
 
-<a href="https://discord.gg/GvYcYpAKTu" target="_blank"><img src="https://iili.io/28m3GHv.png" alt="Join The Boring Server!" style="height: 60px !important;width: 217px !important;" ></a>
+* Shows your current track from Apple Music or Spotify
+* Displays album art, song title, and artist in the notch
+* Updates live as songs change
 
-## Preview
+### 📷 Mirror Preview (Improved by Me)
 
-https://github.com/user-attachments/assets/19b87973-4b3a-4853-b532-7e82d1d6b040
+* Live front camera preview in the notch
+* Built-in toggle: turn it on/off instantly
+* Privacy-focused and performance-friendly
 
-Welcome to **Boring.Notch**, the coolest way to make your MacBook's notch the star of the show! Forget about those boring status bars—our notch turns into a dynamic music control center, complete with a snazzy visualizer and all the music controls you need. It's like having a mini concert right at the top of your screen!
+### ⏰ Pomodoro Timer (Fully Coded by Me)
 
+* Built-in Pomodoro cycles with visual + audio feedback
+* Smart sneak peek every few mins to stay focused
+* Auto breaks, timer reset, total tracking
 
-### Icon credits: [@maxtron95](https://github.com/maxtron95)
-### Website credits: [@himanshhhhuv](https://github.com/himanshhhhuv)
+### 📋 Clipboard History (Clipboard 2.0 by Me)
 
-## 🚀 Getting Started
+* Stores last 48 copied items across devices
+* Pin/unpin support, search, smooth UI, grouped by app
 
-### Prerequisites
+### ⚡ Battery Info
 
-- **A MacBook**: With a boring notch (Not Needed).
-- **macOS 14.2 or later**: If you’re not on the latest macOS, we might need to send a search party.
-- **Xcode 15.0 or later**: This is where the magic happens, so make sure it’s up-to-date.
+* See battery %, charging status, estimated time left
+* Minimal and smart icon inside the notch
 
-### Installation
+### 🗓️ Calendar & Date
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/TheBoredTeam/boring.notch.git
-   cd boring.notch
-   ```
+* Shows today's date and upcoming event
+* Syncs with native macOS Calendar
 
-2. **Open the Project in Xcode**:
-   ```bash
-   open boringNotch.xcodeproj
-   ```
+### 🔮 Sneak Peek Engine
 
-3. **Build and Run**:
-    - Select your target device (MacBook—you do have one, right?).
-    - Click the "Run" button or press `Cmd + R`. Watch the magic unfold!
+* Automatically displays widgets every few mins
+* Custom intervals and duration
+* Works with music, pomodoro, clipboard, etc.
 
-## 🎸 Usage
+## Why boringNotch+?
 
-- Launch the app, and voilà—your notch is now the coolest part of your screen.
-- Hover over the notch to see it expand and reveal all its secrets.
-- Use the controls to manage your music like a rockstar.
+* My own fork with real features, not just ideas
+* Custom settings and behavior for real-world use
+* You can still build it yourself for free from the source
 
-## 📋 Roadmap
-- [x] Proper notch sizing and animations 📐
-- [x] Delayed notch opening ⏲️
-- [x] Charging indicator and current percentage 🔋
-- [x] Playback live activity 🎧
-- [x] Calendar integration 📆
-- [x] Customizable gesture control 👆🏻
-- [x] Shelf functionality with AirDrop 📚
-- [x] Extension system with [starter template](https://github.com/TheBoredTeam/TheBoringWorker) 🧩
-- [ ] Clipboard history manager 📌 `Extension`
-- [ ] System HUD replacements (volume, brightness, backlight) 🎚️💡⌨️ `Extension`
-- [ ] Download indicator of different browsers (Safari, Chromium browsers, Firefox) 🌍 `Extension`
-- [ ] Customizable function buttons 🎛️
-- [ ] Layout customization options 🛠️
-- [ ] Notch sizing customization, finetuning on different display sizes 🖥️
-- [ ] App switcher 🪄
-- [ ] Notifications (under consideration) 🔔
+If you found my work helpful, support me with a symbolic coffee ☕ to help keep the updates flowing. [https://buymeacoffee.com/mustafa.ramx](https://buymeacoffee.com/mustafa.ramx)
 
-## 🧩 Extensions
-> [!NOTE]
-> We’re hard at work on some awesome extensions! Stay tuned, and we’ll keep you updated as soon as they’re released.
+## Support & Community
 
-## 🤝 Contributing
+* 🚸 Website: [mustafaramx.com](https://mustafaramx.com)
+* 🌈 Get boringNotch+: [https://mustafaramx.gumroad.com/l/htcrch](https://mustafaramx.gumroad.com/l/htcrch)
+* 🎤 Join the Discord: [boringNotch Discord](https://discord.gg/GvYcYpAKTu)
 
-We’re all about good vibes and awesome contributions! Here’s how you can join the fun:
+## Credits
 
-1. **Fork the Repo**: Click that shiny "Fork" button and make your own version.
-2. **Clone Your Fork**:
-   ```bash
-   git clone https://github.com/{your-name}/boring.notch.git
-   # Replace {your-name} with your GitHub username
-   ```
-3. **Make sure to use `dev` branch as base.**
-4. **Create a New Branch**:
-   ```bash
-   git checkout -b feature/{your-feature-name}
-   # Replace {your-feature-name} with a descriptive and concise name for your branch
-   # It is best practice to use only alphanumeric characters, write words in lowercase
-   # and seperate words with a single hyphen
-   ```
-5. **Make Your Changes**: Add that feature or fix that bug.
-6. **Commit Your Changes**:
-   ```bash
-   git commit -m "insert descriptive message here"
-   ```
-7. **Push to Your Fork**:
-   ```bash
-   git push origin feature/{your-feature-name}
-   # Remember to replace {your-feature-name} with the name you chose
-   ```
-8. **Create a Pull Request**: Head to the original repository and click on "New Pull Request." Fill in the required details, **make sure the base branch is set to `dev`**, and submit your PR. Let’s see what you’ve got!
+Built on top of the amazing open-source [BoringNotch](https://github.com/TheBoredTeam/boring.notch) by the original team. My fork adds new features, but the heart remains open and collaborative.
 
-## 📝 License
+Thanks to:
 
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+* TheBoredTeam for the original project
+* Lakr233 for NotchDrop integration
+* All the users testing and giving feedback!
 
-## 🎉 Acknowledgments
+---
 
-We would like to express our appreciation to the developers of [NotchDrop](https://github.com/Lakr233/NotchDrop), an open-source project that has been instrumental in developing the "Shelf" feature in Boring.notch. Special thanks to Lakr233 for their contributions to NotchDrop and to [Hugo Persson](https://github.com/Hugo-Persson) for integrating it into our project.
-
-- **SwiftUI**: For making us look like coding wizards.
-- **You**: For being awesome and checking out **boring.notch**!
+Made with ❤️ + SwiftUI in Sydney, by Mustafa Ramadan
+[https://buymeacoffee.com/mustafa.ramx](https://buymeacoffee.com/mustafa.ramx)
