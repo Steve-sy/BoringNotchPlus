@@ -240,10 +240,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		112FB72F2CCF12CC0015238C /* private */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = private; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		465952E02E1520E600EB348F /* Pomodoro */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Pomodoro; sourceTree = "<group>"; };
-=======
->>>>>>> 99c4773 (Clipboard Tab with history & enable-disable feature)
 		46EDBE592E0F805B0045E914 /* Clipboard */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Clipboard; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -318,10 +315,7 @@
 		1471639B2C5D362F0068B555 /* components */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				465952E02E1520E600EB348F /* Pomodoro */,
-=======
->>>>>>> 99c4773 (Clipboard Tab with history & enable-disable feature)
 				46EDBE592E0F805B0045E914 /* Clipboard */,
 				B141C23B2CA5F50900AC8CC8 /* Onboarding */,
 				B1C448992C97375A001F0858 /* Tips */,
@@ -623,10 +617,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				112FB72F2CCF12CC0015238C /* private */,
-<<<<<<< HEAD
 				465952E02E1520E600EB348F /* Pomodoro */,
-=======
->>>>>>> 99c4773 (Clipboard Tab with history & enable-disable feature)
 				46EDBE592E0F805B0045E914 /* Clipboard */,
 			);
 			name = boringNotch;
