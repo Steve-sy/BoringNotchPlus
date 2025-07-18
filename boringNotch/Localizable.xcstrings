@@ -1,7 +1,13 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     " – %lld" : {
+
+    },
+    "'Now Playing' was the only option on previous versions and works with all media apps." : {
 
     },
     "(%@)" : {
@@ -14,6 +20,9 @@
         }
       }
     },
+    "%.0f sec" : {
+
+    },
     "%.0f seconds" : {
 
     },
@@ -23,10 +32,26 @@
     "%@" : {
 
     },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%d%%" : {
 
     },
     "%lld" : {
+
+    },
+    "%lld min" : {
+
+    },
+    "%lld sec" : {
 
     },
     "%lld%%" : {
@@ -52,6 +77,7 @@
       }
     },
     "Accent color" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -94,6 +120,9 @@
     "All-day" : {
 
     },
+    "Allow Access" : {
+
+    },
     "Always hide in fullscreen" : {
 
     },
@@ -129,6 +158,15 @@
         }
       }
     },
+    "Battery Information" : {
+
+    },
+    "Battery Settings" : {
+
+    },
+    "Battery Status" : {
+
+    },
     "Boost your productivity with Clipboard Manager" : {
 
     },
@@ -142,6 +180,9 @@
           }
         }
       }
+    },
+    "Boring Notch" : {
+
     },
     "boring.notch" : {
       "localizations" : {
@@ -174,10 +215,10 @@
         }
       }
     },
-    "Buy us a coffee" : {
+    "Calendar" : {
 
     },
-    "Calendar" : {
+    "Calendar access is denied. Please enable it in System Settings." : {
 
     },
     "Cancel" : {
@@ -193,6 +234,9 @@
         }
       }
     },
+    "Charging on Hold: Desktop Mode" : {
+
+    },
     "Check for updates" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -207,8 +251,17 @@
     "Check for Updates…" : {
 
     },
+    "Choose a Music Source" : {
+
+    },
     "Circle" : {
 
+    },
+    "Clipboard" : {
+
+    },
+    "Clipboard is empty" : {
+      "extractionState" : "manual"
     },
     "Close" : {
 
@@ -223,7 +276,11 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "Custom color" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -243,6 +300,12 @@
 
     },
     "Custom vizualizers (Lottie)" : {
+
+    },
+    "Customize in Settings" : {
+
+    },
+    "Cycles before long break" : {
 
     },
     "Default" : {
@@ -299,9 +362,6 @@
     "Easily copy, store, and manage your most-used content. Upgrade now for advanced features like multi-item storage and quick access!" : {
 
     },
-    "Edit" : {
-
-    },
     "Edit layout" : {
 
     },
@@ -336,6 +396,9 @@
     "Enable music live activity" : {
 
     },
+    "Enable sneak peek" : {
+
+    },
     "Enhance your experience with HUDs" : {
 
     },
@@ -359,6 +422,12 @@
 
     },
     "Extensions" : {
+
+    },
+    "Finish" : {
+
+    },
+    "Focus" : {
 
     },
     "General" : {
@@ -408,6 +477,9 @@
     "High" : {
 
     },
+    "https://github.com/th-ch/youtube-music" : {
+
+    },
     "HUD style" : {
 
     },
@@ -440,10 +512,16 @@
     "License key" : {
 
     },
+    "Long break" : {
+
+    },
     "Lottie JSON URL" : {
 
     },
     "Low" : {
+
+    },
+    "Low Power Mode" : {
 
     },
     "Made with 🫶🏻 by not so boring not.people" : {
@@ -460,6 +538,9 @@
 
     },
     "Match real notch size" : {
+
+    },
+    "Max Capacity: %lld%%" : {
 
     },
     "Media" : {
@@ -495,6 +576,9 @@
         }
       }
     },
+    "Media Source" : {
+
+    },
     "Medium" : {
 
     },
@@ -522,6 +606,9 @@
 
     },
     "More" : {
+
+    },
+    "Music Source" : {
 
     },
     "muted" : {
@@ -565,6 +652,9 @@
     "Non-notch display height" : {
 
     },
+    "Not Now" : {
+
+    },
     "Notch behavior" : {
 
     },
@@ -575,9 +665,6 @@
 
     },
     "OK" : {
-
-    },
-    "Onboarding" : {
 
     },
     "One or more files failed to load" : {
@@ -603,6 +690,12 @@
         }
       }
     },
+    "Open System Settings" : {
+
+    },
+    "Pause" : {
+
+    },
     "Percentage" : {
       "localizations" : {
         "en" : {
@@ -613,7 +706,16 @@
         }
       }
     },
+    "Pin" : {
+
+    },
     "Plugged In" : {
+
+    },
+    "Pomodoro" : {
+
+    },
+    "Pomodoro Focus" : {
 
     },
     "Progress bar" : {
@@ -666,6 +768,9 @@
     "Remember last tab" : {
 
     },
+    "Remove" : {
+
+    },
     "Restart" : {
 
     },
@@ -689,6 +794,9 @@
     "Select Calendars" : {
 
     },
+    "Select the music source you want to use. You can change this later in the app settings." : {
+
+    },
     "selected" : {
 
     },
@@ -706,6 +814,9 @@
       }
     },
     "Shelf" : {
+
+    },
+    "Short break" : {
 
     },
     "Shortcuts" : {
@@ -758,6 +869,12 @@
         }
       }
     },
+    "Show every" : {
+
+    },
+    "Show for" : {
+
+    },
     "Show on a specific display" : {
 
     },
@@ -767,7 +884,13 @@
     "Slider color" : {
 
     },
+    "Sneak Peek" : {
+
+    },
     "Sneak Peek shows the media title and artist under the notch for a few seconds." : {
+
+    },
+    "Sneak Peek Style" : {
 
     },
     "Software updates" : {
@@ -786,6 +909,12 @@
     "Square" : {
 
     },
+    "Start Focus →" : {
+
+    },
+    "Stop" : {
+
+    },
     "Stopped" : {
 
     },
@@ -802,7 +931,7 @@
     "System features" : {
 
     },
-    "TheBoringNotch" : {
+    "Time to Full Charge: %lld min" : {
 
     },
     "Toggle Notch Open:" : {
@@ -824,6 +953,9 @@
 
     },
     "unmuted" : {
+
+    },
+    "Unpin" : {
 
     },
     "Upgrade to Pro" : {
@@ -852,13 +984,22 @@
         }
       }
     },
+    "View on GitHub: th-ch/youtube-music" : {
+
+    },
     "Welcome" : {
 
     },
-    "Welcome window" : {
+    "What's New" : {
 
     },
-    "What's New" : {
+    "You can now enjoy the app. If you want to tweak things further, you can always visit the settings." : {
+
+    },
+    "You're All Set!" : {
+
+    },
+    "YouTube Music requires this third-party app to be installed: " : {
 
     }
   },
