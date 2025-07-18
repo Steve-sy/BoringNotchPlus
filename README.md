@@ -62,6 +62,66 @@
 
 <img width="100%" src="https://public-files.gumroad.com/mt23xkf4f5zanbfeozwz5y4mx3x5" />
 
+### ⏰ Pomodoro Timer (Fully Coded by Me)
+
+* Built-in Pomodoro cycles with visual + audio feedback
+* Smart sneak peek every few mins to stay focused
+* Auto breaks, timer reset, total tracking
+
+### 📋 Clipboard History (Clipboard 2.0 by Me)
+
+* Stores last 48 copied items across devices
+* Pin/unpin support, search, smooth UI, grouped by app
+
+### ⚡ Battery Info
+
+* See battery %, charging status, estimated time left
+* Minimal and smart icon inside the notch
+
+### 🗓️ Calendar & Date
+
+* Shows today's date and upcoming event
+* Syncs with native macOS Calendar
+
+### 🔮 Sneak Peek Engine
+
+* Automatically displays widgets every few mins
+* Custom intervals and duration
+* Works with music, pomodoro, clipboard, etc.
+
+<img width="100%" src="https://public-files.gumroad.com/mt23xkf4f5zanbfeozwz5y4mx3x5" />
+
+* Live front camera preview in the notch
+* Built-in toggle: turn it on/off instantly
+* Privacy-focused and performance-friendly
+
+### ⏰ Pomodoro Timer (Fully Coded by Me)
+
+* Built-in Pomodoro cycles with visual + audio feedback
+* Smart sneak peek every few mins to stay focused
+* Auto breaks, timer reset, total tracking
+
+### 📋 Clipboard History (Clipboard 2.0 by Me)
+
+* Stores last 48 copied items across devices
+* Pin/unpin support, search, smooth UI, grouped by app
+
+### ⚡ Battery Info
+
+* See battery %, charging status, estimated time left
+* Minimal and smart icon inside the notch
+
+### 🗓️ Calendar & Date
+
+* Shows today's date and upcoming event
+* Syncs with native macOS Calendar
+
+### 🔮 Sneak Peek Engine
+
+* Automatically displays widgets every few mins
+* Custom intervals and duration
+* Works with music, pomodoro, clipboard, etc.
+
 ## Why boringNotch+?
 
 * My own fork with real features, not just ideas
