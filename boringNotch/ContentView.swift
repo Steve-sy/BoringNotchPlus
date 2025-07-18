@@ -34,7 +34,6 @@ struct ContentView: View {
     
     @ObservedObject private var clipboardMonitor = ClipboardMonitor.shared
 
-    @StateObject private var clipboardMonitor = ClipboardMonitor()
     @Namespace var albumArtNamespace
 
     @Default(.useMusicVisualizer) var useMusicVisualizer
