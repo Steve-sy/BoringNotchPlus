@@ -74,6 +74,7 @@ struct SettingsView: View {
             .listStyle(SidebarListStyle())
             .toolbar(removing: .sidebarToggle)
             .navigationSplitViewColumnWidth(200)
+            .tint(Defaults[.accentColor])
         } detail: {
             Group {
                 switch selectedTab {
@@ -129,6 +130,9 @@ struct SettingsView: View {
 
 struct GeneralSettings: View {
     @State private var screens: [String] = NSScreen.screens.compactMap { $0.localizedName }
+    let accentColors: [Color] = [
+        .accentColor, .blue, .purple, .pink, .red, .orange, .yellow, .green, .gray, .brown, .mint
+    ]
     @EnvironmentObject var vm: BoringViewModel
     @ObservedObject var coordinator = BoringViewCoordinator.shared
 
@@ -146,9 +150,55 @@ struct GeneralSettings: View {
     @Default(.openNotchOnHover) var openNotchOnHover
     @Default(.alwaysHideInFullscreen) var alwaysHideInFullscreen
     @Default(.showClipboard) var showClipboard
+    @Default(.accentColor) var accentColor
     
     var body: some View {
         Form {
+            Section {
+                HStack {
+                    ForEach(accentColors.indices, id: \.self) { index in
+                        let color = accentColors[index]
+
+                        Button(action: {
+                            withAnimation {
+                                Defaults[.accentColor] = color
+                            }
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(color)
+                                    .frame(width: 20, height: 20)
+
+                                // Selected border
+                                if Defaults[.accentColor] == color {
+                                    Circle()
+                                        .stroke(Color.white, lineWidth: 2)
+                                        .frame(width: 20, height: 20)
+                                        .overlay(
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 7, height: 7)
+                                        )
+                                }
+
+                                // Add "S" label for the first (system) color
+                                if index == 0 {
+                                    Text("S")
+                                        .font(.caption2)
+                                        .foregroundColor(.white)
+                                }
+                            }
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    Spacer()
+                    ColorPicker("Custom color", selection: $accentColor)
+                        .labelsHidden()
+                }
+            } header: {
+                Text("Accent color")
+            }
+
             Section {
                 Defaults.Toggle("Menubar icon", key: .menubarIcon)
                 LaunchAtLogin.Toggle("Launch at login")
@@ -240,6 +290,7 @@ struct GeneralSettings: View {
 
             gestureControls()
         }
+        .tint(Defaults[.accentColor])
         .toolbar {
             Button("Quit app") {
                 NSApp.terminate(self)
@@ -327,6 +378,7 @@ struct Charge: View {
                 Text("Battery Information")
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Battery")
     }
 }
@@ -401,6 +453,7 @@ struct Downloads: View {
                 }
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Downloads")
     }
 }
@@ -446,6 +499,7 @@ struct HUD: View {
                 }
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("HUDs")
     }
 }
@@ -529,6 +583,7 @@ struct Media: View {
                     Defaults[.enableFullscreenMediaDetection] = newValue != .never
                 }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Media")
     }
 
@@ -584,6 +639,7 @@ struct CalendarSettings: View {
             }
         }
         // Add navigation title if it's missing or adjust as needed
+        .tint(Defaults[.accentColor])
         .navigationTitle("Calendar")
     }
 }
@@ -672,6 +728,7 @@ struct About: View {
 //            .controlSize(.extraLarge)
             CheckForUpdatesView(updater: updaterController.updater)
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("About")
     }
 }
@@ -688,6 +745,7 @@ struct Shelf: View {
                 }
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Shelf")
     }
 }
@@ -703,7 +761,7 @@ struct PomodoroSettings: View {
     var body: some View {
         Form {
             Section("Pomodoro Focus") {
-                Defaults.Toggle("Enable Pomodoro", key: .enablePomodoro)
+                Defaults.Toggle("Enable Pomodoro", key: .enablePomodoro).tint(Defaults[.accentColor])
                 
             Group {
                 Defaults.Toggle("Auto Hide", key: .autoHidePomodoro)
@@ -735,7 +793,10 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-            }.disabled(!enablePomodoro)
+            }
+            .tint(Defaults[.accentColor])
+            .disabled(!enablePomodoro)
+                
         }
 
             Section("Sneak Peek") {
@@ -756,7 +817,9 @@ struct PomodoroSettings: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-            }.disabled(!enablePomodoro)
+            }
+            .tint(Defaults[.accentColor])
+            .disabled(!enablePomodoro)
         }
         .navigationTitle("Pomodoro")
     }
@@ -875,6 +938,7 @@ struct Extensions: View {
                 }
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Extensions")
         // TipsView()
         // .padding(.horizontal, 19)
@@ -977,7 +1041,7 @@ struct Appearance: View {
                         .buttonStyle(PlainButtonStyle())
                         .padding(.vertical, 2)
                         .background(
-                            selectedListVisualizer != nil ? selectedListVisualizer == visualizer ? Color.accentColor : Color.clear : Color.clear,
+                            selectedListVisualizer != nil ? selectedListVisualizer == visualizer ? Defaults[.accentColor] : Color.clear : Color.clear,
                             in: RoundedRectangle(cornerRadius: 5)
                         )
                         .contentShape(Rectangle())
@@ -1123,7 +1187,7 @@ struct Appearance: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 20, style: .circular)
                                         .strokeBorder(
-                                            icon == selectedIcon ? Color.accentColor : .clear,
+                                            icon == selectedIcon ? Defaults[.accentColor] : .clear,
                                             lineWidth: 2.5
                                         )
                                 )
@@ -1136,7 +1200,7 @@ struct Appearance: View {
                                 .padding(.vertical, 3)
                                 .background(
                                     Capsule()
-                                        .fill(icon == selectedIcon ? Color.accentColor : .clear)
+                                        .fill(icon == selectedIcon ? Defaults[.accentColor] : .clear)
                                 )
                         }
                         .onTapGesture {
@@ -1156,6 +1220,7 @@ struct Appearance: View {
                 }
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Appearance")
     }
 
@@ -1185,6 +1250,7 @@ struct Shortcuts: View {
                 KeyboardShortcuts.Recorder("Toggle Notch Open:", name: .toggleNotchOpen)
             }
         }
+        .tint(Defaults[.accentColor])
         .navigationTitle("Shortcuts")
     }
 }

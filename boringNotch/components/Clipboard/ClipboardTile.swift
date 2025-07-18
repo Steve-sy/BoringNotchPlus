@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppKit
+import Defaults
 
 struct ClipboardTile: View {
     let item: ClipboardData
@@ -24,7 +25,7 @@ struct ClipboardTile: View {
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(item.isPinned ? Color.accentColor.opacity(0.4) : Color.clear, lineWidth: 1)
+                    .stroke(item.isPinned ? Defaults[.accentColor].opacity(0.4) : Color.clear, lineWidth: 1)
             )
             .onHover { hovering in
                 withAnimation(.easeInOut(duration: 0.2)) {

@@ -77,7 +77,6 @@
       }
     },
     "Accent color" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -280,7 +279,6 @@
 
     },
     "Custom color" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -778,6 +776,9 @@
 
     },
     "Running" : {
+
+    },
+    "S" : {
 
     },
     "seconds" : {
