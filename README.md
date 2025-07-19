@@ -6,12 +6,17 @@
 
 ## Download
 
+You can compile from source **for free** here: [GitHub Source](https://github.com/Steve-sy/BoringNotchPlus)
+
+Or try the prebuilt `.dmg` version with my features here:  
 <a href="https://mustafaramx.gumroad.com/l/htcrch" target="_blank"><img width="200" src="https://www.adviksoft.com/blog/wp-content/uploads/2023/09/editor_download_mac.png" /></a>
+
+*(Optional donations welcome at [BuyMeACoffee](https://buymeacoffee.com/mustafa.ramx))*  
+
+[![Watch the demo](https://static.wixstatic.com/media/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png/v1/fill/w_1480,h_268,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png)](https://video.wixstatic.com/video/4888ba_9d0f8ceee27b49d7b986802c7df1f89b/360p/mp4/file.mp4)
 
 > \[!IMPORTANT]
 > This is a custom enhanced build of BoringNotch with new features and fixes. First time launching on macOS will show a security popup. Go to **Settings > Privacy & Security** and click **Open Anyway**. You only need to do this once.
-
-[![Watch the demo](https://static.wixstatic.com/media/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png/v1/fill/w_1480,h_268,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/4888ba_6f551c29896c45ea9447b30ca18747e6~mv2.png)](https://video.wixstatic.com/video/4888ba_9d0f8ceee27b49d7b986802c7df1f89b/360p/mp4/file.mp4)
 
 ## What is boringNotch+?
 
@@ -19,7 +24,10 @@
 
 ### Live Preview ➡ [https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch](https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch)
 
+
 ## Key Features (New & Improved)
+<img width="100%" src="https://public-files.gumroad.com/wupagmfxnoh9tccachjq0thdlv6b" />
+
 
 ### ✨ Now Playing
 
@@ -62,66 +70,6 @@
 
 <img width="100%" src="https://public-files.gumroad.com/mt23xkf4f5zanbfeozwz5y4mx3x5" />
 
-### ⏰ Pomodoro Timer (Fully Coded by Me)
-
-* Built-in Pomodoro cycles with visual + audio feedback
-* Smart sneak peek every few mins to stay focused
-* Auto breaks, timer reset, total tracking
-
-### 📋 Clipboard History (Clipboard 2.0 by Me)
-
-* Stores last 48 copied items across devices
-* Pin/unpin support, search, smooth UI, grouped by app
-
-### ⚡ Battery Info
-
-* See battery %, charging status, estimated time left
-* Minimal and smart icon inside the notch
-
-### 🗓️ Calendar & Date
-
-* Shows today's date and upcoming event
-* Syncs with native macOS Calendar
-
-### 🔮 Sneak Peek Engine
-
-* Automatically displays widgets every few mins
-* Custom intervals and duration
-* Works with music, pomodoro, clipboard, etc.
-
-<img width="100%" src="https://public-files.gumroad.com/mt23xkf4f5zanbfeozwz5y4mx3x5" />
-
-* Live front camera preview in the notch
-* Built-in toggle: turn it on/off instantly
-* Privacy-focused and performance-friendly
-
-### ⏰ Pomodoro Timer (Fully Coded by Me)
-
-* Built-in Pomodoro cycles with visual + audio feedback
-* Smart sneak peek every few mins to stay focused
-* Auto breaks, timer reset, total tracking
-
-### 📋 Clipboard History (Clipboard 2.0 by Me)
-
-* Stores last 48 copied items across devices
-* Pin/unpin support, search, smooth UI, grouped by app
-
-### ⚡ Battery Info
-
-* See battery %, charging status, estimated time left
-* Minimal and smart icon inside the notch
-
-### 🗓️ Calendar & Date
-
-* Shows today's date and upcoming event
-* Syncs with native macOS Calendar
-
-### 🔮 Sneak Peek Engine
-
-* Automatically displays widgets every few mins
-* Custom intervals and duration
-* Works with music, pomodoro, clipboard, etc.
-
 ## Why boringNotch+?
 
 * My own fork with real features, not just ideas
@@ -148,5 +96,14 @@ Thanks to:
 
 ---
 
-Made with ❤️ + SwiftUI in Sydney, by Mustafa Ramadan
-[https://buymeacoffee.com/mustafa.ramx](https://buymeacoffee.com/mustafa.ramx)
+## License
+
+This project is a fork of [BoringNotch](https://github.com/TheBoredTeam/boring.notch), licensed under the [CC BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/) license.
+
+My changes are publicly visible and respect the original license. This fork is **not for commercial sale**, and I provide full credit to the original authors.
+
+Please do not sell or commercialize any part of this project.
+
+---
+
+Made with ❤️ + SwiftUI in Sydney, by Mustafa Ramadan *(Optional donations welcome at)* [https://buymeacoffee.com/mustafa.ramx](https://buymeacoffee.com/mustafa.ramx)
