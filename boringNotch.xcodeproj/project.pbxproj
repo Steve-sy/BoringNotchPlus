@@ -168,7 +168,7 @@
 		14C08BB52C8DE42D000F8AA0 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		14C08BB82C8DE4B1000F8AA0 /* BoringCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoringCalendar.swift; sourceTree = "<group>"; };
 		14C08BC02C8E03AD000F8AA0 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
-		14CEF4122C5CAED300855D72 /* boringNotch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boringNotch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CEF4122C5CAED300855D72 /* boringNotchPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boringNotchPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CEF4152C5CAED300855D72 /* boringNotchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boringNotchApp.swift; sourceTree = "<group>"; };
 		14CEF4172C5CAED300855D72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		14CEF4192C5CAED400855D72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 		14CEF4132C5CAED300855D72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				14CEF4122C5CAED300855D72 /* boringNotch.app */,
+				14CEF4122C5CAED300855D72 /* boringNotchPlus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -602,9 +602,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		14CEF4112C5CAED300855D72 /* boringNotch */ = {
+		14CEF4112C5CAED300855D72 /* boringNotchPlus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 14CEF4212C5CAED400855D72 /* Build configuration list for PBXNativeTarget "boringNotch" */;
+			buildConfigurationList = 14CEF4212C5CAED400855D72 /* Build configuration list for PBXNativeTarget "boringNotchPlus" */;
 			buildPhases = (
 				14CEF40E2C5CAED300855D72 /* Sources */,
 				14CEF40F2C5CAED300855D72 /* Frameworks */,
@@ -620,7 +620,7 @@
 				465952E02E1520E600EB348F /* Pomodoro */,
 				46EDBE592E0F805B0045E914 /* Clipboard */,
 			);
-			name = boringNotch;
+			name = boringNotchPlus;
 			packageProductDependencies = (
 				14D032192C68F32E0096E6A1 /* LaunchAtLogin */,
 				14D0321C2C68F3350096E6A1 /* Sparkle */,
@@ -633,7 +633,7 @@
 				146BC4362D366E9B0047C66A /* MacroVisionKit */,
 			);
 			productName = dynamicNotch;
-			productReference = 14CEF4122C5CAED300855D72 /* boringNotch.app */;
+			productReference = 14CEF4122C5CAED300855D72 /* boringNotchPlus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -677,7 +677,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				14CEF4112C5CAED300855D72 /* boringNotch */,
+				14CEF4112C5CAED300855D72 /* boringNotchPlus */,
 			);
 		};
 /* End PBXProject section */
@@ -930,7 +930,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = "2.6+1";
+				CURRENT_PROJECT_VERSION = "2.6.1+";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"boringNotch/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -939,7 +939,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = boringNotch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TheBoringNotch;
+				INFOPLIST_KEY_CFBundleDisplayName = "boringNotch+";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = NO;
@@ -952,7 +952,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = "2.6+";
 				PRODUCT_BUNDLE_IDENTIFIER = theboringteam.boringnotch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -978,7 +978,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = "2.6+1";
+				CURRENT_PROJECT_VERSION = "2.6.1+";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"boringNotch/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -986,7 +986,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = boringNotch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TheBoringNotch;
+				INFOPLIST_KEY_CFBundleDisplayName = "boringNotch+";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = NO;
@@ -999,7 +999,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = "2.6+";
 				PRODUCT_BUNDLE_IDENTIFIER = theboringteam.boringnotch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1024,7 +1024,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		14CEF4212C5CAED400855D72 /* Build configuration list for PBXNativeTarget "boringNotch" */ = {
+		14CEF4212C5CAED400855D72 /* Build configuration list for PBXNativeTarget "boringNotchPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				14CEF4222C5CAED400855D72 /* Debug */,
