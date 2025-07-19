@@ -262,7 +262,7 @@ struct MusicSliderView: View {
                 range: 0 ... duration,
                 color: Defaults[.sliderColor] == SliderColorEnum.albumArt ? Color(
                     nsColor: color
-                ).ensureMinimumBrightness(factor: 0.8) : Defaults[.sliderColor] == SliderColorEnum.accent ? .accentColor : .white,
+                ).ensureMinimumBrightness(factor: 0.8) : Defaults[.sliderColor] == SliderColorEnum.accent ? Defaults[.accentColor] : .white,
                 dragging: $dragging,
                 lastDragged: $lastDragged,
                 onValueChange: onValueChange
@@ -305,7 +305,8 @@ struct CustomSlider: View {
     @Binding var lastDragged: Date
     var onValueChange: ((Double) -> Void)?
     var thumbSize: CGFloat = 12
-
+    @State private var isHovering = false
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -322,8 +323,13 @@ struct CustomSlider: View {
 
                 // Filled track
                 Rectangle()
-                    .fill(color)
+                    .fill(dragging || isHovering ? Defaults[.accentColor] : color)
                     .frame(width: filledTrackWidth, height: height)
+                    .onHover { hovering in
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isHovering = hovering
+                        }
+                    }
             }
             .cornerRadius(height / 2)
             .frame(height: 10)

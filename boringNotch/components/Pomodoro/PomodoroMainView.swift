@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct PomodoroMainView: View {
     @ObservedObject var pomodoro = BoringPomodoro.shared
@@ -19,7 +20,7 @@ struct PomodoroMainView: View {
                 Text("Focus")
                     .font(.headline)
                     .minimumScaleFactor(0.5)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(Defaults[.accentColor])
                     .multilineTextAlignment(.center)
 
                 HStack(spacing: 10) {
@@ -58,7 +59,7 @@ struct PomodoroMainView: View {
                         Text(pomodoro.isPaused ? "Continue" :
                              (pomodoro.isRunning ? "Pause" : "Start Focus →"))
                             .foregroundColor(pomodoro.isPaused ? .green :
-                                (pomodoro.isRunning ? .yellow : .accentColor))
+                                (pomodoro.isRunning ? .yellow : Defaults[.accentColor]))
                             .font(.subheadline)
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)

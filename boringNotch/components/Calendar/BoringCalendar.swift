@@ -85,13 +85,13 @@ struct WheelPicker: View {
     private func dayText(date: String, isSelected: Bool) -> some View {
         Text(date)
             .font(.caption2)
-            .foregroundStyle(isSelected ? Color.accentColor : .gray)
+            .foregroundStyle(isSelected ? Defaults[.accentColor] : .gray)
     }
 
     private func dateCircle(date: Date, isSelected: Bool) -> some View {
         ZStack {
             Circle()
-                .fill(isSelected ? Color.accentColor : .clear)
+                .fill(isSelected ? Defaults[.accentColor] : .clear)
                 .frame(width: 24, height: 24)
             Text("\(date.date)")
                 .font(.title3)

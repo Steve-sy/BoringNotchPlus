@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct HoverButton: View {
     var icon: String
@@ -30,7 +31,7 @@ struct HoverButton: View {
                         .frame(width: size, height: size)
                         .overlay {
                             Image(systemName: icon)
-                                .foregroundColor(iconColor)
+                                .foregroundColor(isHovering ? Defaults[.accentColor] : iconColor)
                                 .contentTransition(contentTransition)
                                 .font(scale == .large ? .largeTitle : .body)
                         }
