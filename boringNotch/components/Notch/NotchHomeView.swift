@@ -305,7 +305,8 @@ struct CustomSlider: View {
     @Binding var lastDragged: Date
     var onValueChange: ((Double) -> Void)?
     var thumbSize: CGFloat = 12
-
+    @State private var isHovering = false
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -322,8 +323,13 @@ struct CustomSlider: View {
 
                 // Filled track
                 Rectangle()
-                    .fill(color)
+                    .fill(dragging || isHovering ? Defaults[.accentColor] : color)
                     .frame(width: filledTrackWidth, height: height)
+                    .onHover { hovering in
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isHovering = hovering
+                        }
+                    }
             }
             .cornerRadius(height / 2)
             .frame(height: 10)
