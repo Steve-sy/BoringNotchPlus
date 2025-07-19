@@ -193,6 +193,9 @@
         }
       }
     },
+    "boringNotch+" : {
+
+    },
     "Both" : {
       "localizations" : {
         "en" : {
@@ -523,6 +526,7 @@
 
     },
     "Made with 🫶🏻 by not so boring not.people" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -531,6 +535,12 @@
           }
         }
       }
+    },
+    "Made with 🫶🏻 by not so boring not.people - Enhanced as boringNotch+" : {
+
+    },
+    "Maintained by Steve-Sy" : {
+
     },
     "Match menubar height" : {
 
@@ -917,6 +927,9 @@
 
     },
     "Stopped" : {
+
+    },
+    "Support Me" : {
 
     },
     "Support Us" : {

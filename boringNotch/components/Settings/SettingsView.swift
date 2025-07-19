@@ -709,10 +709,59 @@ struct About: View {
                     Spacer(minLength: 0)
                 }
                 .buttonStyle(PlainButtonStyle())
+                
+                Section {
+                    HStack() {
+                        Text("boringNotch+")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+
+                        Spacer()
+                        
+                        Text("Maintained by Steve-Sy")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.bottom, 4)
+
+                    HStack(spacing: 40) {
+                        Spacer(minLength: 0)
+
+                        Link(destination: URL(string: "https://buymeacoffee.com/mustafa.ramx")!) {
+                            VStack(spacing: 4) {
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.pink)
+                                    .imageScale(.large)
+                                Text("Support Me")
+                                    .foregroundStyle(.primary)
+                                    .font(.callout)
+                            }
+                        }
+
+                        Link(destination: URL(string: "https://github.com/Steve-sy/BoringNotchPlus")!) {
+                            VStack(spacing: 4) {
+                                Image("Github")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.black)
+                                Text("GitHub")
+                                    .foregroundStyle(.primary)
+                                    .font(.callout)
+                            }
+                        }
+
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.top, 4)
+                }
+                
             }
+            
             VStack(spacing: 0) {
                 Divider()
-                Text("Made with 🫶🏻 by not so boring not.people")
+                Text("Made with 🫶🏻 by not so boring not.people - Enhanced as boringNotch+")
                     .foregroundStyle(.secondary)
                     .padding(.top, 5)
                     .padding(.bottom, 7)
