@@ -24,6 +24,15 @@ Or try the prebuilt `.dmg` version with my features here:
 
 ### Live Preview ➡ [https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch](https://www.mustafaramx.com/post/make-your-mac-notch-useful-with-boringnotch)
 
+## Star History (Thanks for everyone)
+
+<a href="https://www.star-history.com/#Steve-sy/BoringNotchPlus&Timeline">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Steve-sy/BoringNotchPlus&type=Timeline&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Steve-sy/BoringNotchPlus&type=Timeline" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Steve-sy/BoringNotchPlus&type=Timeline" />
+ </picture>
+</a>
 
 ## Key Features (New & Improved)
 <img width="100%" src="https://public-files.gumroad.com/wupagmfxnoh9tccachjq0thdlv6b" />
